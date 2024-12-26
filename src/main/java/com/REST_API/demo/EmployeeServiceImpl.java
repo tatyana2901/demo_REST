@@ -11,12 +11,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeDao employeeDao;
 
-    public EmployeeServiceImpl() {
-
-        System.out.println("КОНСТРУКТОР СЕРВИСА РАБОТАЕТ");
-    }
-
-
     @Transactional//отвечает за открытие и закрытие транзакций
     public List<Employee> getAllEmployees() {
         return employeeDao.getAllEmployees();
@@ -25,6 +19,18 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getEmployee(int id) {
         return employeeDao.getEmployee(id);
+    }
+
+    @Override
+    @Transactional
+    public void saveEmployee(Employee employee) {
+        employeeDao.saveEmployee(employee);
+    }
+
+    @Override
+    @Transactional
+    public void deleteEmployee(int id) {
+        employeeDao.deleteEmployee(id);
     }
 
 

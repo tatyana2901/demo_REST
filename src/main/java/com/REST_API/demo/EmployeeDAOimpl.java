@@ -31,7 +31,8 @@ public class EmployeeDAOimpl implements EmployeeDao {
 
     @Override
     public void saveEmployee(Employee employee) {//hibernate: save or update - сохранить или обновить
-        entityManager.merge(employee);
+        Employee newEmployee = entityManager.merge(employee);
+        employee.setId(newEmployee.getId()); //чтобы в postman в разделе request видеть информацию об id - не 0, а актуальный id
     }
 
     @Override
